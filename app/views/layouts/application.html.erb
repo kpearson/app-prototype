@@ -4,6 +4,7 @@
     <title>Relay</title>
     <%= csrf_meta_tags %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -11,16 +12,7 @@
   <body>
     <%= render "shared/navbar" %>
     <div class="container">
-      <% unless notice.nil? %>
-        <div class="alert alert-primary" role="alert">
-          <p class="notice"><%= notice %></p>
-        </div>
-      <% end %>
-      <% unless alert.nil? %>
-        <div class="alert alert-danger" role="alert">
-          <p class="alert"><%= alert %></p>
-        </div>
-      <% end %>
+      <%= render "shared/flash_messages" %>
       <%= yield %>
     </div>
   </body>
