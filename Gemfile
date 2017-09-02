@@ -17,9 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'capybara', '~> 2.13'
   gem 'pry-rails'
-  gem 'rspec-rails', '~> 3.6'
   gem 'selenium-webdriver'
 end
 
@@ -28,5 +26,12 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+end
+
+group :test do
+  gem 'capybara', '~> 2.13'
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'rspec-rails', '~> 3.6'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
