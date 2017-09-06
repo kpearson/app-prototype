@@ -1,0 +1,57 @@
+<div class="container">
+
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-12 py-3">
+      <h1 class="text-center">Relay</h1>
+    </div>
+  </div>
+
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-6 my-2">
+      <div class="card p-2">
+        <h4 class="card-title text-center pt-4">Sign in to the Relay Dashboard</h4>
+        <% if alert %>
+          <p class="text-danger text-center"> Incorrect credentials </p>
+        <% end %>
+
+        <div class="card-body">
+          <%= form_for(
+            resource,
+            as: resource_name,
+            url: session_path(resource_name)) do |f| %>
+
+            <div class="form-group">
+              <%= f.label :email_address, class: "small" %><br />
+              <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "name@email.com"  %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password, class: "small" %><br />
+              <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+            </div>
+
+            <% if devise_mapping.rememberable? -%>
+              <div class="form-check">
+                <%= f.label :remember_me, class: "form-check-label small" do  %>
+                  <%= f.check_box :remember_me, class: "form-check-input" %>
+                  Remember me
+                <% end %>
+              </div>
+            <% end -%>
+
+            <%= f.submit "Sign in", class: "btn btn-primary float-right" %>
+          <% end %>
+
+        </div> <!-- card-body -->
+      </div> <!-- card -->
+    </div> <!-- col -->
+  </div> <!-- row -->
+
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-5 text-center mt-3 devise-links">
+      <%= render "devise/shared/links" %>
+    </div> <!-- col -->
+  </div> <!-- row -->
+
+</div> <!-- container -->
+

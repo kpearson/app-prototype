@@ -1,0 +1,45 @@
+<div class="container">
+
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-12 py-3">
+      <h1 class="text-center">Relay</h1>
+    </div>
+  </div>
+
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-5 my-2 p-2">
+      <div class="card">
+        <h4 class="card-title text-center pt-4">Forgot? No problem!</h4>
+        <p class="text-muted text-center">We can send you a link to reset your password</p>
+
+        <% if alert %>
+          <p class="text-danger text-center"> alert </p>
+        <% end %>
+
+        <div class="card-body">
+          <%= form_for(
+            resource,
+            as: resource_name,
+            url: password_path(resource_name),
+            html: { method: :post }) do |f| %>
+
+            <div class="form-group">
+              <%= f.label :email, class: "small" %><br />
+              <%= f.email_field :email, autofocus: true, placeholder: :email_address, class: "form-control" %>
+            </div>
+
+            <%= f.submit "Reset Password", class: "btn btn-primary float-right" %>
+          <% end %>
+        </div> <!-- card-body -->
+
+      </div> <!-- card -->
+    </div> <!-- col -->
+  </div> <!-- row -->
+
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-5 text-center mt-3 devise-links">
+      <%= render "devise/shared/links" %>
+    </div> <!-- col -->
+  </div> <!-- row -->
+
+</div> <!-- container -->

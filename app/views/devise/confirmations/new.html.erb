@@ -1,0 +1,49 @@
+<div class="container">
+
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-12 py-3">
+      <h1 class="text-center">Relay</h1>
+    </div>
+  </div>
+
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-5 my-2 p-2">
+      <div class="card">
+        <h4 class="card-title text-center pt-4">Reset Your Account Password</h4>
+
+        <% if alert %>
+          <p class="text-danger text-center"> alert </p>
+        <% end %>
+
+        <div class="card-body">
+          <%= form_for(
+            resource,
+            as: resource_name,
+            url: confirmation_path(resource_name),
+            html: { method: :post }) do |f| %>
+
+            <div class="form-group">
+              <%= f.label :email, class: "small"  %><br />
+              <%= f.email_field
+                :email,
+                autofocus: true,
+                value: (resource.pending_reconfirmation? ?
+                        resource.unconfirmed_email : resource.email),
+                class: "form-control" %>
+            </div>
+
+            <%= f.submit "Resend confirmation instructions" %>
+          <% end %>
+        </div> <!-- card-body -->
+
+      </div> <!-- card -->
+    </div> <!-- col -->
+  </div> <!-- row -->
+
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-5 text-center mt-3 devise-links">
+      <%= render "devise/shared/links" %>
+    </div> <!-- col -->
+  </div> <!-- row -->
+
+</div> <!-- container -->

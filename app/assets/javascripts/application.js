@@ -15,3 +15,9 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require_tree .
+
+$('input.but').submit(function(e) {
+    e.preventDefault();
+    $('#modal-dialog').modal('toggle'); //or  $('#IDModal').modal('hide');
+    return false;
+});
